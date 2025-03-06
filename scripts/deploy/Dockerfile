@@ -11,8 +11,8 @@ WORKDIR /app
 # copy package.json and pnpm-lock.yaml to workspace
 COPY . /app
 
-RUN npm install
-RUN npm run build
+RUN pnpm install
+RUN pnpm run build
 
 RUN echo "Builder Success 🎉"
 

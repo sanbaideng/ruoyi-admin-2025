@@ -1,8 +1,6 @@
 FROM node:20-slim AS builder
 
 # --max-old-space-size
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
 ENV NODE_OPTIONS=--max-old-space-size=8192
 ENV TZ=Asia/Shanghai
 
@@ -13,8 +11,8 @@ WORKDIR /app
 # copy package.json and pnpm-lock.yaml to workspace
 COPY . /app
 
-RUN pnpm install --frozen-lockfile
-RUN pnpm run build
+RUN npm install
+RUN npm run build
 
 RUN echo "Builder Success 🎉"
 

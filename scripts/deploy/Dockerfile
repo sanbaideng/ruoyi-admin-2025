@@ -15,12 +15,15 @@ COPY . /app
 RUN pnpm install
 RUN pnpm run build
 
-RUN echo "Builder Success 🎉"
+# List the build output directory structure for debugging
+RUN find /app/dist -type d | sort
+
+RUN echo "Builder Success "
 
 FROM nginx:stable-alpine as production
 
 RUN echo "types { application/javascript js mjs; }" > /etc/nginx/conf.d/mjs.conf
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/dist/app/apps/web-antd /usr/share/nginx/html
 
 COPY --from=builder /app/scripts/deploy/nginx.conf /etc/nginx/nginx.conf
 

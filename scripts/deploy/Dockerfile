@@ -4,7 +4,8 @@ FROM node:20-slim AS builder
 ENV NODE_OPTIONS=--max-old-space-size=8192
 ENV TZ=Asia/Shanghai
 
-RUN corepack enable
+# Install pnpm directly instead of using corepack
+RUN npm install -g pnpm@9.12.0
 
 WORKDIR /app
 

@@ -36,7 +36,7 @@ export default defineConfig(async () => {
             rewrite: (path) => path.replace(/^\/api/, ''),
             // mock代理目标地址
             // target: 'http://localhost:6039',
-            target: 'http://ruoyi-ai-2025.railway.internal',
+            target: 'https://ruoyi-ai-2025-production.up.railway.app',
             ws: true,
           },
         },

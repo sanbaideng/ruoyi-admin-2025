@@ -28,12 +28,12 @@ export default defineConfig(async () => {
         //     }),
         //   ],
         // }),
-      ],
+      ],  
       server: {
         proxy: {
-          '/api': {
+          '/prod-api': {
             changeOrigin: true,
-            rewrite: (path) => path.replace(/^\/api/, ''),
+            rewrite: (path) => path.replace(/^\/prod-api/, ''),
             // mock代理目标地址
             // target: 'http://localhost:6039',
             target: 'https://ruoyi-ai-2025-production.up.railway.app',
